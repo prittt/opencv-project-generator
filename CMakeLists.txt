@@ -29,7 +29,7 @@
 cmake_minimum_required(VERSION 3.0.0)
 
 #Set project name
-set(PROJECT_NAME Project_Name CACHE STRING "" FORCE) 
+set(PROJECT_NAME "Project_Name" CACHE STRING "") 
 
 project (${PROJECT_NAME})
 
@@ -98,7 +98,7 @@ include_directories( "." )
 # OpenCV 
 # --------------------
 
-set(OPENCV_REQUIRED_PACKAGES "core;imgcodecs;imgproc" CACHE STRING "OpenCV required packages" FORCE)
+set(OPENCV_REQUIRED_PACKAGES "core;imgcodecs;imgproc" CACHE STRING "OpenCV required packages")
 
 FIND_PACKAGE(OpenCV REQUIRED ${OPENCV_REQUIRED_PACKAGES})
 include_directories( ${OpenCV_INCLUDE_DIRS} )
@@ -118,10 +118,10 @@ endif()
 
 include_directories("${CMAKE_SOURCE_DIR}/include")
 
-file(GLOB SRCFILES ${SRCFILES} "src/*.cpp" "src/*.c")
+file(GLOB SRCFILES ${SRCFILES} "src/*.cpp" "src/*.c" "src/*.cc")
 file(GLOB HFILES ${HFILES} "include/*.h" "include/*.hpp")
 
-	
+set (addExe ${SRCFILES} ${HFILES})
 add_executable(${PROJECT_NAME} ${addExe})
 target_link_libraries (${PROJECT_NAME}  ${OpenCV_LIBS})
 include_directories (${CMAKE_CURRENT_BINARY_DIR})
