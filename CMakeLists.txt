@@ -1,4 +1,4 @@
-# Copyright(c) 2016 - 2017 Costantino Grana, Federico Bolelli, Lorenzo Baraldi and Roberto Vezzani
+# Copyright(c) 2017 Federico Bolelli
 # All rights reserved.
 # 
 # Redistribution and use in source and binary forms, with or without
@@ -29,9 +29,9 @@
 cmake_minimum_required(VERSION 3.0.0)
 
 #Set project name
-set(PROJECT_NAME "Project_Name" CACHE STRING "") 
+set(GENERATOR_PROJECT_NAME "GENERATOR_PROJECT_NAME" CACHE STRING "") 
 
-project (${PROJECT_NAME})
+project (${GENERATOR_PROJECT_NAME})
 
 #Suppress creation of ZERO_CHECK
 set(CMAKE_SUPPRESS_REGENERATION true)
@@ -72,7 +72,7 @@ else()
 			message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no complete C++11 support. Please use a different C++ compiler.")
 		endif()
 	else()
-		message(STATUS "We are not able to check if ${CMAKE_CXX_COMPILER} compiler has complete C++11 support." ${PROJECT_NAME} " may not work properly.")
+		message(STATUS "We are not able to check if ${CMAKE_CXX_COMPILER} compiler has complete C++11 support." ${GENERATOR_PROJECT_NAME} " may not work properly.")
 	endif()
 endif()
 
@@ -82,7 +82,7 @@ endif()
 # ----------------------------------------------------------------------------
 
 # Save libs and executables in the same place
-set(EXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}" CACHE PATH "Output directory for applications" )
+set(GENERATOR_EXECUTABLE_OUTPUT_PATHEXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}" CACHE PATH "Output directory for applications" )
 
 # ----------------------------------------------------------------------------
 # Solution folders
@@ -98,9 +98,9 @@ include_directories( "." )
 # OpenCV 
 # --------------------
 
-set(OPENCV_REQUIRED_PACKAGES "core;imgcodecs;imgproc" CACHE STRING "OpenCV required packages")
+set(OpenCV_REQUIRED_PACKAGES "core;imgcodecs;imgproc" CACHE STRING "OpenCV required packages")
 
-FIND_PACKAGE(OpenCV REQUIRED ${OPENCV_REQUIRED_PACKAGES})
+FIND_PACKAGE(OpenCV REQUIRED ${OpenCV_REQUIRED_PACKAGES})
 include_directories( ${OpenCV_INCLUDE_DIRS} )
 
 if(MSVC)
@@ -122,6 +122,7 @@ file(GLOB SRCFILES ${SRCFILES} "src/*.cpp" "src/*.c" "src/*.cc")
 file(GLOB HFILES ${HFILES} "include/*.h" "include/*.hpp")
 
 set (addExe ${SRCFILES} ${HFILES})
-add_executable(${PROJECT_NAME} ${addExe})
-target_link_libraries (${PROJECT_NAME}  ${OpenCV_LIBS})
+add_executable(${GENERATOR_PROJECT_NAME} ${addExe})
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${GENERATOR_PROJECT_NAME}) # Set project as startup group instead of ALL_BUILD
+target_link_libraries (${GENERATOR_PROJECT_NAME}  ${OpenCV_LIBS})
 include_directories (${CMAKE_CURRENT_BINARY_DIR})
