@@ -1,1 +1,1 @@
-Put source files here
+Put source files (.c, .cc, .cpp, ...) in this folder
