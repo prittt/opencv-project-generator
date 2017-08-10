@@ -11,7 +11,7 @@ This project is "cross platform" thanks to CMake and will prevent you to waste a
 
 <ul>
 	<li> <a href="https://cmake.org/download/">CMake</a> 3.0.0 or higher; </li>
-	<li> <a href="http://opencv.org/downloads.html">OpenCV</a> (test with Opencv 3.0 and later versions); </li>
+	<li> <a href="http://opencv.org/downloads.html">OpenCV</a> (tested with Opencv 3.0 and later versions); </li>
 	<li> One of your favourite IDE/compiler (tested with Visual Studio 2013/2015/2017); </li>
 </ul>
 
@@ -33,7 +33,7 @@ This project is "cross platform" thanks to CMake and will prevent you to waste a
 ### ... using CMake GUI:
 
 <ol start="2">
-	<li> <p align="justify">Run CMake specifying as <i>source code path</i> "MyProject" (mandatory) and as <i>where to build binaries</i> "MyProject/bin" (suggested)</p> <img src="https://github.com/prittt/OpenCV_Project_Generator/tree/master/data/readme_imgs/" alt="step_1" height="260" width="415"> </li>
+	<li> <p align="justify">Run CMake specifying as <i>source code path</i> "MyProject" (mandatory) and as <i>where to build binaries</i> "MyProject/bin" (suggested). </p> <img src="https://github.com/prittt/OpenCV_Project_Generator/tree/master/data/readme_imgs/step_1.png" alt="step_1" height="260" width="415"> </li>
 
 </ol>
 
