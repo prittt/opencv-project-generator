@@ -28,13 +28,20 @@ This project is "cross platform" thanks to CMake and will prevent you to waste a
 		<li> <p align="justify"><i>.gitignore and .git</i>: git file (useless for your project)</p> </li>
 		<li> <p align="justify"><i>CMakeLists.txt</i>: file that CMake will use to create the project</p> </li>
 	</ul>
+</ol>
+
 ### ... using CMake GUI:
 
+<ol start="2">
 	<li> <p align="justify">Run CMake specifying as <i>source code path</i> "MyProject" path (mandatory) and as <i>where to build binaries</i> "MyProject/bin" path (suggested). If you are using CMake GUI see image below.  Note that CMake should automatically find OpenCV path (if installed), download YACCLAB Dataset and create a project for the selected IDE/compiler.</p> </li>
 
 <img src="https://github.com/prittt/OpenCV_Project_Generator/tree/master/data/readme_imgs/" alt="step_1" height="260" width="415">
 
+</ol>
+
 ## ... using CMake from command line:
+
+<ol start="2">
 
 </ol>
 
