@@ -11,7 +11,7 @@
 # this list of conditions and the following disclaimer in the documentation
 # and / or other materials provided with the distribution.
 # 
-# * Neither the name of YACCLAB nor the names of its
+# * Neither the name of "OpenCV_Project_Generator" nor the names of its
 # contributors may be used to endorse or promote products derived from
 # this software without specific prior written permission.
 # 
@@ -29,7 +29,7 @@
 cmake_minimum_required(VERSION 3.0.0)
 
 #Set project name
-set(GENERATOR_PROJECT_NAME "GENERATOR_PROJECT_NAME" CACHE STRING "") 
+set(GENERATOR_PROJECT_NAME "MyProject" CACHE STRING "") 
 
 project (${GENERATOR_PROJECT_NAME})
 
@@ -47,36 +47,36 @@ endif()
 # ----------------------------------------------------------------------------
 #  Check for c++11 support
 # ----------------------------------------------------------------------------
-
-include(CheckCXXCompilerFlag)
-CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
-CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
-
-if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-	if(COMPILER_SUPPORTS_CXX11)
-		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-	elseif(COMPILER_SUPPORTS_CXX0X)
-		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
-	else()
-		message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no complete C++11 support. Please use a different C++ compiler.")
-	endif()
-	# Set compilation flag to avoid creation of debug info in release configuration under Linux
-	#if(CMAKE_COMPILER_IS_GNUCC)
-	#	message(STATUS "Removed debug info in release mode")
-	#	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O2")
-	#	set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -O2")
-	#endif()
-else()
-	if(MSVC)
-		if(MSVC_VERSION LESS 1800)
-			message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no complete C++11 support. Please use a different C++ compiler.")
-		endif()
-	else()
-		message(STATUS "We are not able to check if ${CMAKE_CXX_COMPILER} compiler has complete C++11 support." ${GENERATOR_PROJECT_NAME} " may not work properly.")
-	endif()
-endif()
-
-
+#
+#include(CheckCXXCompilerFlag)
+#CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
+#CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
+#
+#if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+#	if(COMPILER_SUPPORTS_CXX11)
+#		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+#	elseif(COMPILER_SUPPORTS_CXX0X)
+#		set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+#	else()
+#		message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no complete C++11 support. Please use a different C++ compiler.")
+#	endif()
+#	# Set compilation flag to avoid creation of debug info in release configuration under Linux
+#	#if(CMAKE_COMPILER_IS_GNUCC)
+#	#	message(STATUS "Removed debug info in release mode")
+#	#	set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O2")
+#	#	set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -O2")
+#	#endif()
+#else()
+#	if(MSVC)
+#		if(MSVC_VERSION LESS 1800)
+#			message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no complete C++11 support. Please use a different C++ compiler.")
+#		endif()
+#	else()
+#		message(STATUS "We are not able to check if ${CMAKE_CXX_COMPILER} compiler has complete C++11 support." ${GENERATOR_PROJECT_NAME} " may not work properly.")
+#	endif()
+#endif()
+#
+#
 # ----------------------------------------------------------------------------
 #  Build & install layouts
 # ----------------------------------------------------------------------------
@@ -98,7 +98,7 @@ include_directories( "." )
 # OpenCV 
 # --------------------
 
-set(OpenCV_REQUIRED_PACKAGES "core;imgcodecs;imgproc" CACHE STRING "OpenCV required packages")
+set(OpenCV_REQUIRED_PACKAGES "core;imgcodecs;imgproc;highgui" CACHE STRING "OpenCV required packages")
 
 FIND_PACKAGE(OpenCV REQUIRED ${OpenCV_REQUIRED_PACKAGES})
 include_directories( ${OpenCV_INCLUDE_DIRS} )
