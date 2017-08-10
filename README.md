@@ -33,7 +33,7 @@ This project is "cross platform" thanks to CMake and will prevent you to waste a
 ### ... using CMake GUI:
 
 <ol start="2">
-	<li> <p align="justify">Run CMake specifying as <i>source code path</i> "MyProject" (mandatory) and as <i>where to build binaries</i> "MyProject/bin" (suggested). </p> <img src="https://github.com/prittt/OpenCV_Project_Generator/tree/master/data/readme_imgs/step_1.png" alt="step_1" height="260" width="415"> </li>
+	<li> <p align="justify">Run CMake specifying as <i>source code path</i> "MyProject" (mandatory) and as <i>where to build binaries</i> "MyProject/bin" (suggested). </p> <img src="https://github.com/prittt/OpenCV_Project_Generator/blob/master/data/readme_imgs/step_1.png" alt="step_1" height="260" width="415"> </li>
 
 </ol>
 
