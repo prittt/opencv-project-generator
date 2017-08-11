@@ -36,17 +36,18 @@ The project is cross platform and will prevent you to waste a lot of time whenev
 	<li> <p align="justify">Run CMake specifying as <i>source code path</i> "MyProject" (mandatory) and as <i>where to build binaries</i> "MyProject/bin" (suggested). </p> 
 	     <img src="https://github.com/prittt/OpenCV_Project_Generator/blob/master/data/readme_imgs/step_1.png" alt="step_1">
 	</li>
-	<li> <p align="justify">Click on configure and select the desired project generator (Microsoft Visual Studio 14 2015 in this example) clik <i>finish</i> and wait until the end of the generation process </p> 
+	<li> <p align="justify">Click on configure and select the desired project generator (Microsoft Visual Studio 14 2015 in this example) click <i>finish</i> and wait until the end of the generation process </p> 
 	     <img src="https://github.com/prittt/OpenCV_Project_Generator/blob/master/data/readme_imgs/step_2.png" alt="step_2"> 
 	</li>
-	<li> <p align="justify">If the system variable OPENCV_DIR is correctly set CMake will automatically find the OpenCV installation folder, otherwise it will display an error and the OpenCV installation path must be manually set in the  </p> </li>
+	<li> <p align="justify">If the system variable OPENCV_DIR is correctly set CMake will automatically find the OpenCV installation folder, otherwise it will display an error and the OpenCV installation path must be manually set in the "OpenCV_DIR" field </p> </li>
+	     Error example:
 	     <img src="https://github.com/prittt/OpenCV_Project_Generator/blob/master/data/readme_imgs/step_3.png" alt="step_3">
-	<li> <p align="justify">From CMake is also possible to specify the output project name (), and the list of OpenCV's packages required be the project (). Default list contains all the packages required by the example, if your application requires some other packages yuo can add them separated by semicolon. To add all OpenCV's packages leave the list empty</p>
-	     <img src="https://github.com/prittt/OpenCV_Project_Generator/blob/master/data/readme_imgs/step_2.png" alt="step_2">
+	<li> <p align="justify">From CMake is also possible to specify the output project name (PROJECT_NAME field), and the list of OpenCV's packages required be the project (OpenCV_REQUIRED_PACKAGES). Default packages list contains all the packages required by the example, if your application requires some other packages yuo can add them separated by semicolon. To add all OpenCV's packages leave the list empty</p>
+	     <img src="https://github.com/prittt/OpenCV_Project_Generator/blob/master/data/readme_imgs/step_4.png" alt="step_4">
 	</li>
 	<li> <p align="justify">When all CMake parameters are correctly set click again on configure button and, if everithing is ok (no more red entry) click on configure button. </p>
 	</li>
-	<li> <p align="justify">In the specified <i>binary dir</i> (MyProject/bin in this README.md example) you can now find the project or the make file dipending on the project generator chosen at step 3</p> 
+	<li> <p align="justify">In the specified <i>binary dir</i> (MyProject/bin in this README.md example) you can now find the project or the make file depending on the project generator chosen at step 3</p> 
 	</li>
 </ol>
 
