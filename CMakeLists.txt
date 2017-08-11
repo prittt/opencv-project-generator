@@ -29,9 +29,9 @@
 cmake_minimum_required(VERSION 3.0.0)
 
 #Set project name
-set(GENERATOR_PROJECT_NAME "MyProject" CACHE STRING "") 
+set(PROJECT_NAME "MyProject" CACHE STRING "") 
 
-project (${GENERATOR_PROJECT_NAME})
+project (${PROJECT_NAME})
 
 #Suppress creation of ZERO_CHECK
 set(CMAKE_SUPPRESS_REGENERATION true)
@@ -72,17 +72,11 @@ endif()
 #			message(FATAL_ERROR "The compiler ${CMAKE_CXX_COMPILER} has no complete C++11 support. Please use a different C++ compiler.")
 #		endif()
 #	else()
-#		message(STATUS "We are not able to check if ${CMAKE_CXX_COMPILER} compiler has complete C++11 support." ${GENERATOR_PROJECT_NAME} " may not work properly.")
+#		message(STATUS "We are not able to check if ${CMAKE_CXX_COMPILER} compiler has complete C++11 support." ${PROJECT_NAME} " may not work properly.")
 #	endif()
 #endif()
 #
 #
-# ----------------------------------------------------------------------------
-#  Build & install layouts
-# ----------------------------------------------------------------------------
-
-# Save libs and executables in the same place
-set(GENERATOR_EXECUTABLE_OUTPUT_PATHEXECUTABLE_OUTPUT_PATH "${CMAKE_BINARY_DIR}" CACHE PATH "Output directory for applications" )
 
 # ----------------------------------------------------------------------------
 # Solution folders
@@ -117,12 +111,17 @@ endif()
 # --------------------
 
 include_directories("${CMAKE_SOURCE_DIR}/include")
+include_directories("${CMAKE_INSTALL_PREFIX}") # To avoid linking error when new file is added to the project directly from Visual Studio IDE
 
 file(GLOB SRCFILES ${SRCFILES} "src/*.cpp" "src/*.c" "src/*.cc")
 file(GLOB HFILES ${HFILES} "include/*.h" "include/*.hpp")
 
+add_definitions(-D_CRT_SECURE_NO_WARNINGS) #To suppress 'fopen' opencv warning/bug on Visual Studio
+
+source_group("Header Files" FILES ${HFILES})
+source_group("Source Files" FILES ${SRCFILES})
+
 set (addExe ${SRCFILES} ${HFILES})
-add_executable(${GENERATOR_PROJECT_NAME} ${addExe})
-set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${GENERATOR_PROJECT_NAME}) # Set project as startup group instead of ALL_BUILD
-target_link_libraries (${GENERATOR_PROJECT_NAME}  ${OpenCV_LIBS})
-include_directories (${CMAKE_CURRENT_BINARY_DIR})
+add_executable(${PROJECT_NAME} ${addExe})
+set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${PROJECT_NAME}) # Set project as startup group instead of ALL_BUILD
+target_link_libraries (${PROJECT_NAME}  ${OpenCV_LIBS})
