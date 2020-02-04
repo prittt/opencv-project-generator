@@ -54,10 +54,7 @@ The project is cross platform and will prevent you to waste a lot of time whenev
 
 ## ... using CMake from command line:
 
-	Work in progress
+Work in progress
 
-<ol start="2">
-
-</ol>
 
 
